@@ -21,6 +21,9 @@
 
 #edgeLine {
   position: absolute;
+
+  left: 400px;
+  top: 0px;
   
   width: 5px;
   height: 800px;
@@ -31,6 +34,9 @@
 
 #startLine {
   position: absolute;
+
+  left: 0px;
+  top: 400px;
   
   width: 800px;
   height: 5px;
