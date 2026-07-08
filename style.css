@@ -22,7 +22,7 @@
 #edgeLine {
   position: absolute;
   
-  width: 2px;
+  width: 5px;
   height: 800px;
 
   background-color: blue;
@@ -33,7 +33,7 @@
   position: absolute;
   
   width: 800px;
-  height: 2px;
+  height: 5px;
 
   background-color: green;
 
