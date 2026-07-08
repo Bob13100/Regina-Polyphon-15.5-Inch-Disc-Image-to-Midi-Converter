@@ -1,6 +1,7 @@
 const upload = document.getElementById("imageUpload");
 const image = document.getElementById("discImage");
 const workspace = document.getElementById("workspace");
+const centerdot = document.getElementById("centerDot");
 
 upload.addEventListener("change", function(){
   
