@@ -25,8 +25,8 @@ document.addEventListener("mousemove",function(event){
 
   if (dragging) {
     const rect= workspace.getBoundingClientRect();
-    centerDot.style.left = (event.clientX - rect.left) + "px";
-    centerDot.style.top = (event.clientY - rect.top) + "px";
+    centerDot.style.left = (event.clientX - rect.left - 10) + "px";
+    centerDot.style.top = (event.clientY - rect.top - 10) + "px";
   }
 });
 
