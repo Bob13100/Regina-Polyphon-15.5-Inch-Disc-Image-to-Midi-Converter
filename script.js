@@ -15,6 +15,14 @@ centerDot.addEventListener("mousedown",function(){
   dragging = true;
 });
 
+document.addEventListener("mousemove",function(event){
+
+  if (dragging) {
+    centerDot.style.left = event.clientX + "px";
+    centerDot.style.top = event.clientY + "px";
+  }
+});
+
 document.addEventListener("mouseup",function(){
   dragging = false;
 });
