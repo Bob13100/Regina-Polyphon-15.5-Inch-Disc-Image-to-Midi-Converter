@@ -1,4 +1,14 @@
 #workspace {
   border: 2px solid black;
   display: none;
+  position: relative;
+}
+
+#centerDot {
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  background-color: red;
 }
