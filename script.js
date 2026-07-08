@@ -10,6 +10,6 @@ upload.addEventListener("change", function(){
   image.src = URL.createObjectURL(upload.files[0]);  
   }
 centerDot.addEventListener(mousedown,function(){
-  console.log("Clicked!")
+  console.log("Clicked!");
 }
 );
