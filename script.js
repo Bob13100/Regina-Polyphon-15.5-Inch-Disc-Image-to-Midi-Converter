@@ -17,6 +17,7 @@ image.addEventListener("dragstart", function(event){
 });
 
 centerDot.addEventListener("mousedown",function(){
+  event.preventDefault();
   dragging = true;
 });
 
