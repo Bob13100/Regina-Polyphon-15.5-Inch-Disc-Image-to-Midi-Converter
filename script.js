@@ -11,5 +11,5 @@ upload.addEventListener("change", function(){
   }
 centerDot.addEventListener(mousedown,function(){
   console.log("Clicked!");
-}
+);}
 );
