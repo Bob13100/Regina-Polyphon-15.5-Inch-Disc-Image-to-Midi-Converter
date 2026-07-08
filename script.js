@@ -1,3 +1,5 @@
+let dragging = false;
+
 const upload = document.getElementById("imageUpload");
 const image = document.getElementById("discImage");
 const workspace = document.getElementById("workspace");
@@ -10,5 +12,5 @@ upload.addEventListener("change", function(){
   image.src = URL.createObjectURL(upload.files[0]);  
   });
 centerDot.addEventListener("mousedown",function(){
-  console.log("Clicked!");
+  dragging = true;
 });
