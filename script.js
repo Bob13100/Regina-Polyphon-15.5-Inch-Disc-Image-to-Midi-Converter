@@ -8,8 +8,7 @@ upload.addEventListener("change", function(){
   workspace.style.display = "inline-block";
   
   image.src = URL.createObjectURL(upload.files[0]);  
-  }
+  });
 centerDot.addEventListener(mousedown,function(){
   console.log("Clicked!");
-);}
-);
+});
