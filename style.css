@@ -16,4 +16,25 @@
   background-color: red;
 
   border-radius: 50%;
+
+}
+
+#edgeLine {
+  position: absolute;
+  
+  width: 2px;
+  height: 800px;
+
+  background-color: blue;
+
+}
+
+#startLine {
+  position: absolute;
+  
+  width: 800px;
+  height: 2px;
+
+  background-color: green;
+
 }
