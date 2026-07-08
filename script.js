@@ -11,6 +11,11 @@ upload.addEventListener("change", function(){
   
   image.src = URL.createObjectURL(upload.files[0]);  
   });
+
+image.addEventListener("dragstart", function(event){
+  event.preventDefault();
+});
+
 centerDot.addEventListener("mousedown",function(){
   dragging = true;
 });
@@ -18,8 +23,9 @@ centerDot.addEventListener("mousedown",function(){
 document.addEventListener("mousemove",function(event){
 
   if (dragging) {
-    centerDot.style.left = event.clientX + "px";
-    centerDot.style.top = event.clientY + "px";
+    const rect= workspace.getBoundingClientRect();
+    centerDot.style.left = (event.clientX - rect.left) + "px";
+    centerDot.style.top = (event.clientY - rect.top) + "px";
   }
 });
 
