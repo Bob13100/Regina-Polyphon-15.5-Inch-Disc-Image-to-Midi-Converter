@@ -14,3 +14,7 @@ upload.addEventListener("change", function(){
 centerDot.addEventListener("mousedown",function(){
   dragging = true;
 });
+
+document.addEventListener("mouseup",function(){
+  dragging = false;
+});
