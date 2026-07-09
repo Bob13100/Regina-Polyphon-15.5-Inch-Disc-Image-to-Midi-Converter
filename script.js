@@ -64,7 +64,7 @@ document.addEventListener("mousemove",function(event){
   if (draggingObject === edgeGuide) {
 
     edgeGuide.style.left = mouseX + "px";
-    edgeGuide.style.top = mouseY + "px";
+  
   }
   
   if (draggingObject === startGuide) {
