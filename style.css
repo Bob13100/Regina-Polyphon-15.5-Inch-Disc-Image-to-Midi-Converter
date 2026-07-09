@@ -17,8 +17,6 @@
 
   border-radius: 50%;
 
-  cursor: grab;
-
 }
 
 #startGuide {
@@ -60,7 +58,7 @@
   position: absolute;
 
   left: 400px;
-  top: 800px;
+  top: 0px;
 
   width: 16px;
   height: 16px;
