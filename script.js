@@ -30,6 +30,8 @@ centerDot.addEventListener("mousedown",function(){
 rotationHandle.addEventListener("mousedown",function(){
   event.preventDefault();
 
+  event.stopPropagation();
+
   rotating = true;
   
 });
