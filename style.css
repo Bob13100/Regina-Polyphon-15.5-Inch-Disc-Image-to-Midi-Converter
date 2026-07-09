@@ -24,9 +24,9 @@
 #startGuide {
   position: absolute;
 
-  left: 400;
+  left: 400px;
 
-  top: 400;
+  top: 400px;
 
 }
 
@@ -47,7 +47,7 @@
   position: absolute;
 
   left: 0px;
-  top: 400px;
+  top: -400px;
   
   width: 800px;
   height: 5px;
