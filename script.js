@@ -4,6 +4,7 @@ const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
 
 let dragging = false;
+let rotating = false;
 
 upload.addEventListener("change", function(){
   
