@@ -17,6 +17,8 @@
 
   border-radius: 50%;
 
+  cursor: grab;
+
 }
 
 #startGuide {
