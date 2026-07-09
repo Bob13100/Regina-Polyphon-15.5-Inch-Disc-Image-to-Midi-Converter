@@ -49,8 +49,8 @@ document.addEventListener("mousemove",function(event){
 
   if (rotating) {
 
-    const centerX = rect.left + 400;
-    const centerY = rect.top + 400;
+    const centerX = rect.left + 800;
+    const centerY = rect.top + 800;
     
     const dx = event.clientX - centerX;
     const dy = event.clientY - centerY;
