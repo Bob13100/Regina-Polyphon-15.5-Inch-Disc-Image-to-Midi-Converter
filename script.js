@@ -2,7 +2,7 @@ const upload = document.getElementById("imageUpload");
 const image = document.getElementById("discImage");
 const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
-const rotationHandle = document.getElementbyId("rotationHandle");
+const rotationHandle = document.getElementById("rotationHandle");
 
 let dragging = false;
 let rotating = false;
