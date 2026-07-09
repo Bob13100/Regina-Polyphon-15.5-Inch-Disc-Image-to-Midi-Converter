@@ -4,7 +4,7 @@ const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
 const rotationHandle = document.getElementById("rotationHandle");
 const startGuide = document.getElementById("startGuide");
-const edgeLine = document.getElementById("edgeLine")
+const edgeGuide = document.getElementById("edgeGuide")
 
 let draggingObject = null;
 let rotating = false;
@@ -34,10 +34,10 @@ rotationHandle.addEventListener("mousedown",function(){
   
 });
 
-edgeLine.addEventListener("mousedown",function(){
+edgeGuide.addEventListener("mousedown",function(){
   event.preventDefault();
   
-  draggingObject = edgeLine;
+  draggingObject = edgeGuide;
   
 });
 
@@ -58,6 +58,19 @@ document.addEventListener("mousemove",function(event){
 
     centerDot.style.left = (mouseX - 10) + "px";
     centerDot.style.top = (mouseY - 10) + "px";
+  
+  }
+
+  if (draggingObject === edgeGuide) {
+
+    edgeGuide.style.left = mouseX + "px";
+    edgeGuide.style.top = mouseY + "px";
+  }
+  
+  if (draggingObject === startGuide) {
+
+    startGuide.style.left = mouseX + "px";
+    startGuide.style.top = mouseY + "px";
   
   }
 
