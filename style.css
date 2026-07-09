@@ -41,6 +41,15 @@
 
 }
 
+#edgeGuide {
+  position: absolute;
+
+  left: 400px;
+
+  top: 400px;
+
+}
+
 #startLine {
   position: absolute;
 
