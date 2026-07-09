@@ -31,8 +31,8 @@
 #edgeLine {
   position: absolute;
 
-  left: 400px;
-  top: 0px;
+  left: 0px;
+  top: -400px;
   
   width: 5px;
   height: 800px;
