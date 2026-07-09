@@ -26,6 +26,8 @@
 
   top: 400px;
 
+  transform-origin: 0px 0px;
+
 }
 
 #edgeLine {
