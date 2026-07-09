@@ -3,6 +3,8 @@ const image = document.getElementById("discImage");
 const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
 const rotationHandle = document.getElementById("rotationHandle");
+const startLine = document.getElementById("startLine");
+const edgeLine = document.getElementById("edgeLine")
 
 let dragging = false;
 let rotating = false;
@@ -32,7 +34,19 @@ rotationHandle.addEventListener("mousedown",function(){
   
 });
 
+edgeLine.addEventListener("mousedown",function(){
+  event.preventDefault();
+  
+  dragging = true;
+  
+});
 
+startLine.addEventListener("mousedown",function(){
+  event.preventDefault();
+  
+  dragging = true;
+  
+});
 
 document.addEventListener("mousemove",function(event){
 
@@ -44,6 +58,12 @@ document.addEventListener("mousemove",function(event){
 
     centerDot.style.left = (event.clientX - rect.left - 10) + "px";
     centerDot.style.top = (event.clientY - rect.top - 10) + "px";
+
+    edgeLine.style.left = (event.clientX - rect.left - 10) + "px";
+    edgeLine.style.top = (event.clientY - rect.top - 10) + "px";
+
+    startLine.style.left = (event.clientX - rect.left - 10) + "px";
+    startLine.style.top = (event.clientY - rect.top - 10) + "px";
     
   }
 
