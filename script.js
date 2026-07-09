@@ -3,10 +3,10 @@ const image = document.getElementById("discImage");
 const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
 const rotationHandle = document.getElementById("rotationHandle");
-const startLine = document.getElementById("startLine");
+const startGuide = document.getElementById("startGuide");
 const edgeLine = document.getElementById("edgeLine")
 
-let dragging = false;
+let draggingObject = null;
 let rotating = false;
 
 upload.addEventListener("change", function(){
@@ -23,7 +23,7 @@ image.addEventListener("dragstart", function(event){
 centerDot.addEventListener("mousedown",function(){
   event.preventDefault();
   
-  dragging = true;
+  draggingObject = centerDot;
   
 });
 
@@ -37,14 +37,14 @@ rotationHandle.addEventListener("mousedown",function(){
 edgeLine.addEventListener("mousedown",function(){
   event.preventDefault();
   
-  dragging = true;
+  draggingObject = edgeLine;
   
 });
 
-startLine.addEventListener("mousedown",function(){
+startGuide.addEventListener("mousedown",function(){
   event.preventDefault();
   
-  dragging = true;
+  draggingObject = startGuide;
   
 });
 
@@ -54,17 +54,11 @@ document.addEventListener("mousemove",function(event){
   const mouseX = event.clientX - rect.left;
   const mouseY = event.clientY - rect.top;
 
-  if (dragging) {
+  if (draggingObject === centerDot) {
 
-    centerDot.style.left = (event.clientX - rect.left - 10) + "px";
-    centerDot.style.top = (event.clientY - rect.top - 10) + "px";
-
-    edgeLine.style.left = (event.clientX - rect.left - 10) + "px";
-    edgeLine.style.top = (event.clientY - rect.top - 10) + "px";
-
-    startLine.style.left = (event.clientX - rect.left - 10) + "px";
-    startLine.style.top = (event.clientY - rect.top - 10) + "px";
-    
+    centerDot.style.left = (mouseX - 10) + "px";
+    centerDot.style.top = (mouseY - 10) + "px";
+  
   }
 
   if (rotating) {
@@ -84,7 +78,8 @@ document.addEventListener("mousemove",function(event){
 });
 
 document.addEventListener("mouseup",function(){
-  dragging = false;
+  
+  draggingObject = null;
 
   rotating = false;
   
