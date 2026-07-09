@@ -19,7 +19,11 @@ image.addEventListener("dragstart", function(event){
 
 centerDot.addEventListener("mousedown",function(){
   event.preventDefault();
+  
   dragging = true;
+
+  rotating = true;
+  
 });
 
 document.addEventListener("mousemove",function(event){
@@ -53,4 +57,7 @@ document.addEventListener("mousemove",function(event){
 
 document.addEventListener("mouseup",function(){
   dragging = false;
+
+  rotating = false;
+  
 });
