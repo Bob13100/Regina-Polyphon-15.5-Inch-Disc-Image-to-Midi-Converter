@@ -2,6 +2,7 @@ const upload = document.getElementById("imageUpload");
 const image = document.getElementById("discImage");
 const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
+const rotationHandle = document.getElementbyId("rotationHandle");
 
 let dragging = false;
 let rotating = false;
@@ -21,10 +22,17 @@ centerDot.addEventListener("mousedown",function(){
   event.preventDefault();
   
   dragging = true;
+  
+});
+
+rotationHandle.addEventListener("mousedown",function(){
+  event.preventDefault();
 
   rotating = true;
   
 });
+
+
 
 document.addEventListener("mousemove",function(event){
 
