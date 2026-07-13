@@ -78,13 +78,13 @@ document.addEventListener("mousemove",function(event){
 
   if (rotating) {
 
-    const centerX = rect.left + 400;
-    const centerY = rect.top + 400;
+    const centerX = rect.left + parseFloat(startGuide.style.left);
+    const centerY = rect.top + parseFloat(startGuide.style.top);
     
     const dx = event.clientX - centerX;
     const dy = event.clientY - centerY;
     
-    const angle = Math.atan2(dx, dy);
+    const angle = Math.atan2(dy, dx);
 
     startGuide.style.transform = `rotate(${angle}rad)`;
     
