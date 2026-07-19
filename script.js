@@ -28,6 +28,14 @@ image.onload = function(){
   
   const pixel = ctx.getImageData(400, 400, 1, 1).data;
 
+  const red = pixel[0];
+  const green = pixel[1];
+  const blue = pixel[2];
+
+  const gray = (red+green+blue)/3;
+
+  console.log(gray);
+
   console.log(pixel);
   
 }
