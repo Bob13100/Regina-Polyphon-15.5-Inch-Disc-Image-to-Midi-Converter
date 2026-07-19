@@ -7,6 +7,7 @@ const startGuide = document.getElementById("startGuide");
 const edgeGuide = document.getElementById("edgeGuide");
 const canvas = document.getElementById("discCanvas");
 const ctx = canvas.getContext("2d");
+const pixel = ctx.getImageData(400, 400, 1, 1).data;
 
 let draggingObject = null;
 let rotating = false;
@@ -17,6 +18,16 @@ upload.addEventListener("change", function(){
   
   image.src = URL.createObjectURL(upload.files[0]);  
   });
+
+image.onload = function(){
+
+  canvas.width = image.width;
+
+  canvas.height = image.height;
+
+  ctx.drawImage(image, 0, 0)
+  
+}
 
 image.addEventListener("dragstart", function(event){
   event.preventDefault();
