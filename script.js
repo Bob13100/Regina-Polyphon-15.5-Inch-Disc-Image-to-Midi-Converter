@@ -7,7 +7,6 @@ const startGuide = document.getElementById("startGuide");
 const edgeGuide = document.getElementById("edgeGuide");
 const canvas = document.getElementById("discCanvas");
 const ctx = canvas.getContext("2d");
-const pixel = ctx.getImageData(400, 400, 1, 1).data;
 
 let draggingObject = null;
 let rotating = false;
@@ -26,6 +25,10 @@ image.onload = function(){
   canvas.height = image.height;
 
   ctx.drawImage(image, 0, 0)
+  
+  const pixel = ctx.getImageData(400, 400, 1, 1).data;
+
+  console.log(pixel);
   
 }
 
