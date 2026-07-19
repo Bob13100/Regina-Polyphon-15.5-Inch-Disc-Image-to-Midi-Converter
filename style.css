@@ -83,3 +83,9 @@
   cursor: grab;
 
 }
+
+#discCanvas{
+
+  display: none;
+
+}
