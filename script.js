@@ -4,7 +4,9 @@ const workspace = document.getElementById("workspace");
 const centerDot = document.getElementById("centerDot");
 const rotationHandle = document.getElementById("rotationHandle");
 const startGuide = document.getElementById("startGuide");
-const edgeGuide = document.getElementById("edgeGuide")
+const edgeGuide = document.getElementById("edgeGuide");
+const canvas = document.getElementById("discCanvas");
+const ctx = canvas.getContext("2d");
 
 let draggingObject = null;
 let rotating = false;
