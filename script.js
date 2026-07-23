@@ -25,29 +25,20 @@ image.onload = function () {
 
     ctx.drawImage(image, 0, 0);
 
-    // -----------------------
-    // Get center of disc
-    // -----------------------
+ 
     const centerX = parseFloat(centerDot.style.left);
     const centerY = parseFloat(centerDot.style.top);
 
-    // -----------------------
-    // Get edge guide position
-    // -----------------------
     const edgeX = parseFloat(edgeGuide.style.left);
     const edgeY = parseFloat(edgeGuide.style.top);
 
-    // -----------------------
-    // Calculate radius
-    // -----------------------
+
     const radius = Math.sqrt(
         (edgeX - centerX) ** 2 +
         (edgeY - centerY) ** 2
     );
 
-    // -----------------------
-    // Scan pixels
-    // -----------------------
+    
     for (let y = 0; y < canvas.height; y++) {
 
         for (let x = 0; x < canvas.width; x++) {
@@ -59,7 +50,6 @@ image.onload = function () {
 
             if (distance <= radius) {
 
-                // Read this pixel
                 const pixel = ctx.getImageData(x, y, 1, 1).data;
 
             }
