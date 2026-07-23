@@ -18,28 +18,57 @@ upload.addEventListener("change", function(){
   image.src = URL.createObjectURL(upload.files[0]);  
   });
 
-image.onload = function(){
+image.onload = function () {
 
-  canvas.width = image.width;
+    canvas.width = image.width;
+    canvas.height = image.height;
 
-  canvas.height = image.height;
+    ctx.drawImage(image, 0, 0);
 
-  ctx.drawImage(image, 0, 0)
-  
-  const pixel = ctx.getImageData(400, 400, 1, 1).data;
+    // -----------------------
+    // Get center of disc
+    // -----------------------
+    const centerX = parseFloat(centerDot.style.left);
+    const centerY = parseFloat(centerDot.style.top);
 
-  const red = pixel[0];
-  const green = pixel[1];
-  const blue = pixel[2];
+    // -----------------------
+    // Get edge guide position
+    // -----------------------
+    const edgeX = parseFloat(edgeGuide.style.left);
+    const edgeY = parseFloat(edgeGuide.style.top);
 
-  const gray = (red+green+blue)/3;
+    // -----------------------
+    // Calculate radius
+    // -----------------------
+    const radius = Math.sqrt(
+        (edgeX - centerX) ** 2 +
+        (edgeY - centerY) ** 2
+    );
 
-  console.log(gray);
+    // -----------------------
+    // Scan pixels
+    // -----------------------
+    for (let y = 0; y < canvas.height; y++) {
 
-  console.log(pixel);
-  
+        for (let x = 0; x < canvas.width; x++) {
+
+            const dx = x - centerX;
+            const dy = y - centerY;
+
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance <= radius) {
+
+                // Read this pixel
+                const pixel = ctx.getImageData(x, y, 1, 1).data;
+
+            }
+
+        }
+
+    }
+
 }
-
 image.addEventListener("dragstart", function(event){
   event.preventDefault();
 });
@@ -102,11 +131,11 @@ document.addEventListener("mousemove",function(event){
 
   if (rotating) {
 
-    const centerX = rect.left + parseFloat(startGuide.style.left);
-    const centerY = rect.top + parseFloat(startGuide.style.top);
+    const centerStartX = rect.left + parseFloat(startGuide.style.left);
+    const centerStartY = rect.top + parseFloat(startGuide.style.top);
     
-    const dx = event.clientX - centerX;
-    const dy = event.clientY - centerY;
+    const dx = event.clientX - centerStartX;
+    const dy = event.clientY - centerStartY;
     
     const angle = Math.atan2(dy, dx);
 
