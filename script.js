@@ -148,13 +148,14 @@ for (let y = 0; y < canvas.height; y++) {
     // If the blob's long axis is close to radial, keep it
     const isRadial = angleDiff < 0.6; // about 34 degrees tolerance
 
-    if (isRadial) {
-      foundBlobs.push({
-        x: blobX,
-        y: blobY,
-        area: area,
-        angleDiff: angleDiff
-      });
+    for (const [px, py] of pixelsInBlob) {
+  const idx = (py * canvas.width + px) * 4;
+  pixels[idx] = 255;
+  pixels[idx + 1] = 0;
+  pixels[idx + 2] = 0;
+}
+
+ctx.putImageData(imageData, 0, 0);
 
       // Mark detected blobs red
       for (const [px, py] of pixelsInBlob) {
