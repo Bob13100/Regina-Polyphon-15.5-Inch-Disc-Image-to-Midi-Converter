@@ -216,7 +216,6 @@ console.log("Detected blobs:", foundBlobs);
         }
     }
   ctx.putImageData(imageData, 0, 0);
-}
   
 image.addEventListener("dragstart", function(event){
   event.preventDefault();
