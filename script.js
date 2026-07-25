@@ -20,25 +20,30 @@ upload.addEventListener("change", function(){
 
 image.onload = function () {
 
-    canvas.width = image.width;
-    canvas.height = image.height;
+    canvas.width = 800;
+    canvas.height = 800;
 
-    ctx.drawImage(image, 0, 0);
+    ctx.drawImage(image, 0, 0, 800, 800);
 
- 
+    
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels = imageData.data;
+
+   
     const centerX = parseFloat(centerDot.style.left);
     const centerY = parseFloat(centerDot.style.top);
 
+    
     const edgeX = parseFloat(edgeGuide.style.left);
     const edgeY = parseFloat(edgeGuide.style.top);
 
-
+    
     const radius = Math.sqrt(
         (edgeX - centerX) ** 2 +
         (edgeY - centerY) ** 2
     );
 
-    
+   
     for (let y = 0; y < canvas.height; y++) {
 
         for (let x = 0; x < canvas.width; x++) {
@@ -46,19 +51,30 @@ image.onload = function () {
             const dx = x - centerX;
             const dy = y - centerY;
 
-            const distance = Math.sqrt(dx * dx + dy * dy);
+           
+            if (dx * dx + dy * dy > radius * radius)
+                continue;
 
-            if (distance <= radius) {
+            const index = (y * canvas.width + x) * 4;
 
-                const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const red = pixels[index];
+            const green = pixels[index + 1];
+            const blue = pixels[index + 2];
+
+            const gray = (red + green + blue) / 3;
+
+            if (gray < 100) {
+
+    pixels[index] = 255;
+    pixels[index + 1] = 0;
+    pixels[index + 2] = 0;
 
             }
-
         }
-
     }
-
+  ctx.putImageData(imageData, 0, 0);
 }
+  
 image.addEventListener("dragstart", function(event){
   event.preventDefault();
 });
