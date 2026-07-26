@@ -24,12 +24,12 @@ image.onload = function () {
   canvas.width = 800;
   canvas.height = 800;
 
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(image, 0, 0, 800, 800);
 
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = imageData.data;
 
-  // Use actual screen positions, not inline style strings
   const workspaceRect = workspace.getBoundingClientRect();
   const centerRect = centerDot.getBoundingClientRect();
   const edgeRect = edgeGuide.getBoundingClientRect();
@@ -45,12 +45,10 @@ image.onload = function () {
     (edgeY - centerY) ** 2
   );
 
-  // Scan settings
   const threshold = 100;
   const minArea = 8;
   const maxArea = 500;
 
-  // Make a mask of dark pixels inside the disc
   const dark = new Uint8Array(canvas.width * canvas.height);
 
   for (let y = 0; y < canvas.height; y++) {
@@ -64,7 +62,6 @@ image.onload = function () {
       const red = pixels[index];
       const green = pixels[index + 1];
       const blue = pixels[index + 2];
-
       const gray = (red + green + blue) / 3;
 
       if (gray < threshold) {
@@ -73,7 +70,6 @@ image.onload = function () {
     }
   }
 
-  // Flood fill to find connected blobs
   const visited = new Uint8Array(canvas.width * canvas.height);
   const neighbors = [
     [1, 0], [-1, 0], [0, 1], [0, -1],
@@ -122,7 +118,6 @@ image.onload = function () {
       const area = pixelsInBlob.length;
       if (area < minArea || area > maxArea) continue;
 
-      // Compute centroid
       let sumX = 0;
       let sumY = 0;
 
@@ -134,7 +129,6 @@ image.onload = function () {
       const blobX = sumX / area;
       const blobY = sumY / area;
 
-      // Compute blob orientation using image moments
       let mu20 = 0;
       let mu02 = 0;
       let mu11 = 0;
@@ -158,17 +152,24 @@ image.onload = function () {
       const isRadial = angleDiff < 0.6;
 
       if (isRadial) {
+        const angle = (Math.atan2(blobY - centerY, blobX - centerX) + 2 * Math.PI) % (2 * Math.PI);
+        const distance = Math.sqrt((blobX - centerX) ** 2 + (blobY - centerY) ** 2);
+
         foundBlobs.push({
           x: blobX,
           y: blobY,
           area: area,
-          angleDiff: angleDiff
+          angleDiff: angleDiff,
+          angle: angle,
+          distance: distance
         });
       }
     }
   }
 
-  console.log("Detected blobs:", foundBlobs);
+  foundBlobs.sort((a, b) => a.angle - b.angle);
+
+  console.log("Detected blobs sorted by angle:", foundBlobs);
 };
 
 centerDot.addEventListener("mousedown", function (event) {
