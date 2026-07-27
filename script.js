@@ -191,7 +191,7 @@ function scanDiscF() {
   foundBlobs.sort((a, b) => a.angle - b.angle);
 
   console.log("Detected blobs sorted by angle:", foundBlobs);
-}
+
 
 scanDiscV.addEventListener("click", scanDiscF);
 
