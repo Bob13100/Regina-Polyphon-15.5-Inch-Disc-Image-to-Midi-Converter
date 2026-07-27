@@ -162,18 +162,28 @@ function scanDiscF() {
 
       const isRadial = angleDiff < 0.6;
 
-      if (isRadial) {
-        const angle = (Math.atan2(blobY - centerY, blobX - centerX) + 2 * Math.PI) % (2 * Math.PI);
-        const distance = Math.sqrt((blobX - centerX) ** 2 + (blobY - centerY) ** 2);
+     if (isRadial) {
+  const angle = (Math.atan2(blobY - centerY, blobX - centerX) + 2 * Math.PI) % (2 * Math.PI);
+  const distance = Math.sqrt((blobX - centerX) ** 2 + (blobY - centerY) ** 2);
 
-        foundBlobs.push({
-          x: blobX,
-          y: blobY,
-          area: area,
-          angleDiff: angleDiff,
-          angle: angle,
-          distance: distance
-        });
+  foundBlobs.push({
+    x: blobX,
+    y: blobY,
+    area: area,
+    angleDiff: angleDiff,
+    angle: angle,
+    distance: distance
+  });
+
+  // Paint the detected blob red
+  for (const [px, py] of pixelsInBlob) {
+    const idx = (py * canvas.width + px) * 4;
+    pixels[idx] = 255;     // red
+    pixels[idx + 1] = 0;   // green
+    pixels[idx + 2] = 0;   // blue
+    pixels[idx + 3] = 255; // alpha
+  }
+}
       }
     }
   }
