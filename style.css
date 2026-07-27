@@ -98,6 +98,8 @@
 
 #discCanvas{
 
+  position: absolute;
+
   display: block;
 
 }
