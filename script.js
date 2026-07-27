@@ -7,7 +7,7 @@ const startGuide = document.getElementById("startGuide");
 const edgeGuide = document.getElementById("edgeGuide");
 const canvas = document.getElementById("discCanvas");
 const ctx = canvas.getContext("2d");
-const scanDisc = document.getElementById("scanDisc");
+const scanDiscV = document.getElementById("scanDisc");
 
 let draggingObject = null;
 let rotating = false;
@@ -29,7 +29,7 @@ image.onload = function () {
   ctx.drawImage(image, 0, 0, 800, 800);
 };
 
-function scanDisc() {
+function scanDiscF() {
   if (!image.src) return;
 
   canvas.width = 800;
@@ -183,7 +183,7 @@ function scanDisc() {
   console.log("Detected blobs sorted by angle:", foundBlobs);
 }
 
-scanDisc.addEventListener("click", scanDisc);
+scanDiscV.addEventListener("click", scanDiscF);
 
 centerDot.addEventListener("mousedown", function (event) {
   event.preventDefault();
