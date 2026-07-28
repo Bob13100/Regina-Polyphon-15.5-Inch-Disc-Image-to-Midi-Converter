@@ -182,15 +182,18 @@ function scanDiscF() {
     pixels[idx + 1] = 0;   // green
     pixels[idx + 2] = 0;   // blue
     pixels[idx + 3] = 255; // alpha
-  }
-}
+          }
+        }
       }
     }
-  }
 
   foundBlobs.sort((a, b) => a.angle - b.angle);
 
   console.log("Detected blobs sorted by angle:", foundBlobs);
+
+  ctx.putImageData(imageData, 0, 0);
+  
+}
 
 
 scanDiscV.addEventListener("click", scanDiscF);
