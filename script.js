@@ -35,6 +35,8 @@ function scanDiscF() {
   canvas.width = 800;
   canvas.height = 800;
 
+  const foundBlobs = [];
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(image, 0, 0, 800, 800);
 
