@@ -35,13 +35,13 @@ function scanDiscF() {
   canvas.width = 800;
   canvas.height = 800;
 
-  const foundBlobs = [];
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(image, 0, 0, 800, 800);
 
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = imageData.data;
+
+  const foundBlobs = [];
 
   const workspaceRect = workspace.getBoundingClientRect();
   const centerRect = centerDot.getBoundingClientRect();
