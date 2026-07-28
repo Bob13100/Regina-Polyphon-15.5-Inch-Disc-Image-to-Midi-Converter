@@ -97,8 +97,6 @@ function scanDiscF() {
     return x >= 0 && x < canvas.width && y >= 0 && y < canvas.height;
   }
 
-  const foundBlobs = [];
-
   for (let y = 0; y < canvas.height; y++) {
     for (let x = 0; x < canvas.width; x++) {
       const startIndex = indexOf(x, y);
