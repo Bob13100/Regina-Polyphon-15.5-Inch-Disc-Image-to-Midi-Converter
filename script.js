@@ -166,14 +166,11 @@ function scanDiscF() {
   const angle = (Math.atan2(blobY - centerY, blobX - centerX) + 2 * Math.PI) % (2 * Math.PI);
   const distance = Math.sqrt((blobX - centerX) ** 2 + (blobY - centerY) ** 2);
 
-  foundBlobs.push({
-    x: blobX,
-    y: blobY,
-    area: area,
-    angleDiff: angleDiff,
-    angle: angle,
-    distance: distance
-  });
+  const tineSpacing = 5; // temporary — we'll determine the real spacing
+
+const tineNumber = Math.round(
+  (distance - firstTineRadius) / tineSpacing
+) + 1;
 
   // Paint the detected blob red
   for (const [px, py] of pixelsInBlob) {
@@ -190,6 +187,11 @@ function scanDiscF() {
   foundBlobs.sort((a, b) => a.angle - b.angle);
 
   console.log("Detected blobs sorted by angle:", foundBlobs);
+
+  console.log(
+  "Blob distances:",
+  foundBlobs.map(blob => blob.distance).sort((a, b) => a - b)
+);
 
   ctx.putImageData(imageData, 0, 0);
   
