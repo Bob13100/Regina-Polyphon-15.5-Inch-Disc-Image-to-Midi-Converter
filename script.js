@@ -213,12 +213,6 @@ for (let i = 0; i < tineRatios.length; i++) {
   tine: closestTine
 });
 
-  const tineSpacing = 5; // temporary — we'll determine the real spacing
-
-const tineNumber = Math.round(
-  (distance - firstTineRadius) / tineSpacing
-) + 1;
-
   // Paint the detected blob red
   for (const [px, py] of pixelsInBlob) {
     const idx = (py * canvas.width + px) * 4;
