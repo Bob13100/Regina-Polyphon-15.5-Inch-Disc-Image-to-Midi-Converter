@@ -43,6 +43,28 @@ function scanDiscF() {
 
   const foundBlobs = [];
 
+  const tineRatios = [
+  0.100684, 0.111574, 0.122413, 0.133161,
+  0.144000, 0.154839, 0.165548, 0.176387,
+  0.187097, 0.197806, 0.208645, 0.219355,
+  0.230065, 0.240774, 0.251613, 0.262323,
+  0.273032, 0.283742, 0.294452, 0.305161,
+  0.316000, 0.326710, 0.337419, 0.348129,
+  0.358839, 0.369548, 0.380258, 0.390968,
+  0.401677, 0.412516, 0.423097, 0.433935,
+  0.444645, 0.455355, 0.466065, 0.476774,
+  0.487484, 0.498194, 0.508903, 0.519097,
+  0.530323, 0.541032, 0.551742, 0.562452,
+  0.573290, 0.583871, 0.594581, 0.605290,
+  0.616000, 0.626710, 0.637419, 0.648258,
+  0.658839, 0.669548, 0.680387, 0.691097,
+  0.701806, 0.712516, 0.723226, 0.733935,
+  0.744645, 0.755355, 0.766065, 0.776774,
+  0.787484, 0.798194, 0.808903, 0.819613,
+  0.830323, 0.841032, 0.851742, 0.862452,
+  0.873161, 0.883871, 0.894581, 0.905290
+];
+
   const workspaceRect = workspace.getBoundingClientRect();
   const centerRect = centerDot.getBoundingClientRect();
   const edgeRect = edgeGuide.getBoundingClientRect();
@@ -165,6 +187,31 @@ function scanDiscF() {
      if (isRadial) {
   const angle = (Math.atan2(blobY - centerY, blobX - centerX) + 2 * Math.PI) % (2 * Math.PI);
   const distance = Math.sqrt((blobX - centerX) ** 2 + (blobY - centerY) ** 2);
+
+  const blobRatio = distance / radius;
+
+let closestTine = 0;
+let smallestDifference = Infinity;
+
+for (let i = 0; i < tineRatios.length; i++) {
+  const difference = Math.abs(blobRatio - tineRatios[i]);
+
+  if (difference < smallestDifference) {
+    smallestDifference = difference;
+    closestTine = i + 1;
+  }
+}
+
+       foundBlobs.push({
+  x: blobX,
+  y: blobY,
+  area: area,
+  angleDiff: angleDiff,
+  angle: angle,
+  distance: distance,
+  ratio: blobRatio,
+  tine: closestTine
+});
 
   const tineSpacing = 5; // temporary — we'll determine the real spacing
 
