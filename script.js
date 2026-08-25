@@ -190,9 +190,7 @@ function scanDiscF() {
 
  const blobRatio = distance / radius;
 
-if (blobRatio >= 0.9773) {
-  continue;
-}
+console.log("Blob ratio:", blobRatio);
 
 let closestTine = 0;
 let smallestDifference = Infinity;
