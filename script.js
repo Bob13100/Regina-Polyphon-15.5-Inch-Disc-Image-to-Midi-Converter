@@ -188,7 +188,11 @@ function scanDiscF() {
   const angle = (Math.atan2(blobY - centerY, blobX - centerX) + 2 * Math.PI) % (2 * Math.PI);
   const distance = Math.sqrt((blobX - centerX) ** 2 + (blobY - centerY) ** 2);
 
-  const blobRatio = distance / radius;
+ const blobRatio = distance / radius;
+
+if (blobRatio >= 0.9773) {
+  continue;
+}
 
 let closestTine = 0;
 let smallestDifference = Infinity;
