@@ -22,28 +22,41 @@ image.addEventListener("dragstart", function (event) {
 });
 
 image.onload = function () {
-  canvas.width = 800;
-  canvas.height = 800;
+
+  const displayWidth = 800;
+  const aspectRatio = image.naturalHeight / image.naturalWidth;
+  const displayHeight = Math.round(displayWidth * aspectRatio);
+
+  image.style.width = displayWidth + "px";
+  image.style.height = displayHeight + "px";
+
+  canvas.width = displayWidth;
+  canvas.height = displayHeight;
+
+  canvas.style.width = displayWidth + "px";
+  canvas.style.height = displayHeight + "px";
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(image, 0, 0, 800, 800);
+
+  ctx.drawImage(
+    image,
+    0,
+    0,
+    displayWidth,
+    displayHeight
+  );
 };
 
 function scanDiscF() {
   if (!image.src) return;
 
-  const maxSize = 800;
-
-const scale = Math.min(
-  maxSize / image.naturalWidth,
-  maxSize / image.naturalHeight
-);
-
-const displayWidth = image.naturalWidth * scale;
-const displayHeight = image.naturalHeight * scale;
+  const displayWidth = image.clientWidth;
+const displayHeight = image.clientHeight;
 
 canvas.width = displayWidth;
 canvas.height = displayHeight;
+
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 ctx.drawImage(
   image,
