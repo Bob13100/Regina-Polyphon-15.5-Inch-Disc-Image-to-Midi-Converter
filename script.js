@@ -32,11 +32,26 @@ image.onload = function () {
 function scanDiscF() {
   if (!image.src) return;
 
-  canvas.width = 800;
-  canvas.height = 800;
+  const maxSize = 800;
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(image, 0, 0, 800, 800);
+const scale = Math.min(
+  maxSize / image.naturalWidth,
+  maxSize / image.naturalHeight
+);
+
+const displayWidth = image.naturalWidth * scale;
+const displayHeight = image.naturalHeight * scale;
+
+canvas.width = displayWidth;
+canvas.height = displayHeight;
+
+ctx.drawImage(
+  image,
+  0,
+  0,
+  displayWidth,
+  displayHeight
+);
 
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = imageData.data;
