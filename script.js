@@ -8,6 +8,12 @@ const edgeGuide = document.getElementById("edgeGuide");
 const canvas = document.getElementById("discCanvas");
 const ctx = canvas.getContext("2d");
 const scanDiscV = document.getElementById("scanDisc");
+const sensitivity = document.getElementById("sensitivity");
+const sensitivityValue = document.getElementById("sensitivityValue");
+
+sensitivity.addEventListener("input", function () {
+  sensitivityValue.textContent = sensitivity.value;
+});
 
 let draggingObject = null;
 let rotating = false;
