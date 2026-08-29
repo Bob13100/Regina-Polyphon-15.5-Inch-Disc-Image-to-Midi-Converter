@@ -36,7 +36,9 @@ image.onload = function () {
   canvas.style.width = displayWidth + "px";
   canvas.style.height = displayHeight + "px";
 
-  edgeGuide.style.height = displayHeight + "px";
+  edgeGuide.style.left = displayWidth + "px";
+edgeGuide.style.top = "0px";
+edgeGuide.style.height = displayHeight + "px";
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
