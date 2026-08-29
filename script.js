@@ -118,7 +118,7 @@ ctx.drawImage(
     (edgeY - centerY) ** 2
   );
 
-  const threshold = 100;
+  const threshold = Number(sensitivity.value);
   const minArea = 8;
   const maxArea = 500;
 
