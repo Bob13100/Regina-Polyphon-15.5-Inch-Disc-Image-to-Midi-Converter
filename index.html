@@ -10,6 +10,17 @@
   <h2>NOTE: ONLY 15.5" discs</h2>
   <p>Convert images of Regina/Polyphon 15.5" Discs into downloadable/playable MIDI files</p>
   <p>Make sure the image is clear and straight-on. Dark backgrounds, black especially, are HIGHLY recommended.</p>
+
+  <label for="scanMode">Scan Mode:</label>
+
+<select id="scanMode">
+    <option value="automatic">Automatic Detection</option>
+    <option value="color">Manual Color Detection</option>
+    <option value="manual">Manual Hole Selection</option>
+</select>
+
+<button id="scanDisc">Scan Disc</button>
+  
   <input type="file" id="imageUpload">
 
   <br><br>
