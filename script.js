@@ -32,6 +32,8 @@ image.onload = function () {
   const displayWidth = 800;
   const aspectRatio = image.naturalHeight / image.naturalWidth;
   const displayHeight = Math.round(displayWidth * aspectRatio);
+  workspace.style.width = displayWidth + "px";
+  workspace.style.height = displayHeight + "px";
 
   image.style.width = displayWidth + "px";
   image.style.height = displayHeight + "px";
@@ -42,9 +44,19 @@ image.onload = function () {
   canvas.style.width = displayWidth + "px";
   canvas.style.height = displayHeight + "px";
 
+  const centerX = displayWidth / 2;
+  const centerY = displayHeight / 2;
+
+  centerDot.style.left = (centerX - centerDot.offsetWidth / 2) + "px";
+  centerDot.style.top = (centerY - centerDot.offsetHeight / 2) + "px";
+
+  startGuide.style.left = centerX + "px";
+  startGuide.style.top = centerY + "px";
+  startGuide.style.transform = "rotate(0rad)";
+
   edgeGuide.style.left = displayWidth + "px";
-edgeGuide.style.top = "0px";
-edgeGuide.style.height = displayHeight + "px";
+  edgeGuide.style.top = "0px";
+  edgeGuide.style.height = displayHeight + "px";
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
