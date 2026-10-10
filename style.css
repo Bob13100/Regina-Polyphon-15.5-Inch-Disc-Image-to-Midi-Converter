@@ -31,12 +31,14 @@
 
 #startGuide {
   position: absolute;
-
+  
   left: 400px;
-
   top: 400px;
-
+  
   transform-origin: 0px 0px;
+  
+  z-index: 5;
+}
 
 }
 
@@ -63,14 +65,15 @@
 
 #startLine {
   position: absolute;
-
+  
   left: -400px;
   top: 0px;
   
   width: 800px;
   height: 5px;
-
+  
   background-color: green;
+}
 
 }
 
