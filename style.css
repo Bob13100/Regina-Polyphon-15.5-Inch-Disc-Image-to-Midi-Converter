@@ -42,25 +42,29 @@
 
 }
 
-#edgeLine {
-  position: absolute;
-
-  left: 0px;
-  top: -400px;
+#edgeGuide {
   
-  width: 5px;
-
-  background-color: blue;
-
+  position: absolute;
+  
+  left: 800px;
+  top: 0;
+  
+  width: 4px;
+  
+  z-index: 6;
 }
 
-#edgeGuide {
+#edgeLine {
+  
   position: absolute;
-
-  left: 400px;
-
-  top: 400px;
-
+  
+  left: 0;
+  top: 0;
+  
+  width: 4px;
+  height: 100%;
+  
+  background-color: blue;
 }
 
 #startLine {
