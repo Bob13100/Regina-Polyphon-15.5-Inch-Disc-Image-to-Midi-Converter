@@ -279,7 +279,7 @@ for (let i = 0; i < tineRatios.length; i++) {
       }
     }
 
-  foundBlobs.sort((a, b) => a.angle - b.angle);
+  foundBlobs.sort((a, b) => b.angle - a.angle);
 
   console.log("Detected blobs sorted by angle:", foundBlobs);
 
