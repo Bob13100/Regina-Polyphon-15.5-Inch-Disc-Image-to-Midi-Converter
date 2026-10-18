@@ -18,6 +18,16 @@
     <option value="color">Manual Color Detection</option>
     <option value="manual">Manual Hole Selection</option>
 </select>
+
+
+<div id="colorControls" style="display: none;">
+  <label for="holeColor">Hole Color:</label>
+  <input type="color" id="holeColor" value="#00ff00">
+  <label for="colorTolerance">Color Tolerance:</label>
+  <input type="range" id="colorTolerance" min="0" max="255" value="60">
+  <span id="colorToleranceValue">60</span>
+</div>
+
   
   <input type="file" id="imageUpload">
 
