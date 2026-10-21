@@ -132,7 +132,7 @@ ctx.drawImage(
 
   const threshold = Number(sensitivity.value);
   const minArea = 8;
-  const maxArea = 500;
+  const maxArea = 10000000;
 
   const dark = new Uint8Array(canvas.width * canvas.height);
 
